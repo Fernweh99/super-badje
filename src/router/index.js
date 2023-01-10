@@ -6,11 +6,10 @@ const routes = [
     path: "/",
     name: "Home",
     component: HomeView,
-    props: { name: "type" },
+    props: { name: "type"},
   },
   {
     path: "/:name",
-    name: "avatar",
     component: HomeView,
     props: true,
   },

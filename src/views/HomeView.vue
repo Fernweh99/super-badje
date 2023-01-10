@@ -1,18 +1,57 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div :class="name">
+    <Navbar :name="name"/>
+    <div :key="name" class="description">
+      <!-- first three steps of costumization-->
+      <h2 v-if="name != 'data' && name != 'print'">
+        {{ this.$store.state.stepsActivated.length + " Choose " + setArticle + " " + name }}
+      </h2>
+      <!-- last step of costumization -->
+      <h2 v-else-if="name == 'data'">
+        {{ this.$store.state.stepsActivated.length + " Insert your " + name }}
+      </h2>
+      <!-- last step of costumization -->
+      <h2 v-else-if="name == 'print'">
+        {{ this.$store.state.stepsActivated.length + " " + capitalize(name) }}!
+      </h2>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import Navbar from '@/components/Navbar.vue';
 
 export default {
   name: "HomeView",
   components: {
-    HelloWorld,
+    Navbar,
+  } ,
+  props: {
+    name: String,
   },
+  filters: {
+    capitalize: function (value) {
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    },
+  },
+  computed: {
+    setArticle() {
+      const vocals = ['a', 'e', 'i','o', 'u'];
+      let cont = true;
+      let result = 'a';
+      vocals.forEach(vocal => {
+        if (this.name[0] == vocal && cont == true) {
+          result = 'an'
+          cont = false;
+        }
+      })
+      return result;
+    },
+    capitalize(){
+      return (v)=>{
+        return v.charAt(0).toUpperCase() + v.slice(1);
+      }
+    }
+  }
 };
 </script>
