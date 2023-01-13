@@ -1,6 +1,6 @@
 <template>
-  <div :class="name">
-    <Navbar :name="name"/>
+  <div class="d-flex h-100" :class="name">
+    <Navbar class="w-nav" :name="name"/>
     <div :key="name" class="description">
       <!-- first three steps of costumization-->
       <h2 v-if="name != 'data' && name != 'print'">
@@ -29,11 +29,6 @@ export default {
   props: {
     name: String,
   },
-  filters: {
-    capitalize: function (value) {
-      return value.charAt(0).toUpperCase() + value.slice(1);
-    },
-  },
   computed: {
     setArticle() {
       const vocals = ['a', 'e', 'i','o', 'u'];
@@ -55,3 +50,13 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+  .w-nav {
+    width: 150px;
+    height: 100%;
+  }
+  .description {
+    width: calc(100% - 150px);
+    height: 100%;
+  }
+</style>

@@ -5,11 +5,18 @@
 </template>
 
 <style lang="scss">
+@import "assets/scss/style.scss";
+html {
+  height: 100%;
+  body {
+    height: 100%;
+    ul {
+      list-style-type: none;
+    }
+  }
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  height: 100%;
   color: #2c3e50;
 }
 </style>

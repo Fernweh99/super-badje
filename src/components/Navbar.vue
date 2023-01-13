@@ -2,14 +2,14 @@
   <div id="nav">
     <!--Links navigazione Step-->
     <ul class="links">
-      <!-- <li>
-        <router-link v-if="getPrev" :to="`/${getPrev}`">Prev</router-link>
-      </li> -->
+      <li>
+        <router-link :to="`/${getNext}`"><i class="fa-solid fa-left-long"></i></router-link>
+      </li>
       <li v-if="name != 'print'">
-        <router-link @click="pushNext" v-if="getNext" :to="`/${getNext}`">Next</router-link>
+        <router-link @click="pushNext" v-if="getNext" :to="`/${getNext}`"><i class="fa-solid fa-right-long"></i></router-link>
       </li>
       <li v-else>
-        <a @click.prevent="goHome">Reset</a>
+        <a href="#" @click.prevent="goHome"><i class="fa-solid fa-rotate-right"></i></a>
       </li>
     </ul>
     <!--/Links navigazione Step-->
@@ -48,6 +48,25 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+  #nav {
+    background-color: #E54545;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      background-color: white;
+      border-radius: 50%;
+      text-decoration: none;
+      i {
+        font-size: 30px;
+        color: #FFC34D;
+      }
+    }
+  }
 </style>
